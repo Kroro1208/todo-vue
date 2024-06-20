@@ -19,3 +19,7 @@ POSTMAN で api 叩いて json 取得できるかを確認する
 
 以下のパッケージをインストールして cors の設定をする方が新しい
 `composer require fruitcake/laravel-cors`
+
+### -i フラグを使うことで、コントローラに invokable メソッドを持たせることができます。 単一のアクションメソッドを持つコントローラでルート定義を簡潔にできる
+
+`artisan make:controller Auth/LoginController -i`
