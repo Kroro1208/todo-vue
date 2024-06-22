@@ -15,8 +15,14 @@ class LoginController extends Controller
      */
     public function __invoke(LoginRequest $request)
     {
-        $user = User::where('email', $request->email)->first();
-        if (!$user || !Hash::check($request->password, $user->password)) {
+        // $user = User::where('email', $request->email)->first();
+        // if (!$user || !Hash::check($request->password, $user->password)) {
+        //     throw ValidationException::withMessages([
+        //         'email' => ['入力された認証情報が間違っています。']
+        //     ]);
+        // }
+
+        if (!auth()->attempt($request->only(['email', 'password']))) {
             throw ValidationException::withMessages([
                 'email' => ['入力された認証情報が間違っています。']
             ]);
